@@ -5,7 +5,7 @@ import {Edit} from './Edit'
 
 export function Show(props){
     
-    return <div className="list">
+    return <div className="list" key={props.i} >
         <p style={{display:"none"}} >{props.i} </p>
         <br/>
         Title: {props.title} 

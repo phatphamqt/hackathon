@@ -29,9 +29,15 @@ export function Edit(e){
     })
         .then(function () {
             console.log("Document successfully updated!");
+            db.collection("todo").doc(neee)
+                    .onSnapshot(function (doc) {
+                        console.log("Current data: ", doc.data());
+                    });
+
         })
         .catch(function (error) {
             // The document probably doesn't exist.
             console.error("Error updating document: ", error);
         });
+
 }
