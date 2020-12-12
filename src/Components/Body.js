@@ -161,7 +161,6 @@ export class Body extends React.Component {
             }
         }
 
-
         return <Fragment>
             <div id="body">
                 <div id="user">
