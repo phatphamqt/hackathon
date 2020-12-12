@@ -1,14 +1,7 @@
 
 import "firebase/firestore";
 import firebase from 'firebase/app'
-import { firebaseConfig } from '../config/firebase.config'
 
-
-try {
-    firebase.initializeApp(firebaseConfig);
-} catch (e) {
-    console.log(e.message)
-}
 
 
 const db = firebase.firestore();

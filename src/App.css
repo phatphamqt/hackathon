@@ -1,42 +1,7 @@
 .App {
   text-align: center;
+  max-height: 100%;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #1D2228;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 #text{
   width: 100%;
 }
@@ -45,85 +10,127 @@
   display: flex;
   justify-content: space-between;
   padding: 0px 10px;
-  background-color: #E1E2E2;
+  background-color: #1D2228;
 }
 
 #sidehead{
   display: flex;
 }
-
-#sidehead > p {
-  margin-left: 100px;
+#left > h3{
+  color: #FB8122;
+  font-size: x-large;
+  font-weight: bolder;
+}
+#sidehead > a {
+  margin-left: 10px;
   margin-right: 20px;
   text-align: center;
   align-self: center;
   text-decoration: none;
-  color: #1D2228;
+  color: whitesmoke;
+  font-size: large;
+  font-weight: bolder;
 }
 
-#body{
-  display: flex;
-  
-}
+
 #user{
   color: #E1E2E2;
-  width: 20%;
-  height: 500px;
-  background: #1D2228;
+  width: 100%;
+  height: 80px;
+  background: #474747;
   float: left;
-  border: 1px solid #E1E2E2;
+  /* border: 1px solid #E1E2E2; */
+  font-size: large;
+  font-weight: 500;
+}
+#user > p{
+  margin: 10px 10px;
+}
+
+#signup{
+  display: flex;
+  justify-content: space-around;
 }
 #info{
   color: #E1E2E2;
-  width: 80%;
-  height: 500px;
-  background: #1D2228;
-  float: right;
-  border: 1px solid #E1E2E2;
+  max-width: 100%;
+  background: whitesmoke;
+  padding-top: 28px;
+  padding-left: 20px;
+  background-image: url("https://images.freeimages.com/images/large-previews/4ed/abstract-patterns-1566494.jpg");
+  max-height: 500px;
+  overflow: scroll;
 }
 
 .list{
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: 30%;
   margin: 10px 10px;
-  padding: 5px 5px;
-  background-color: #FB8122;
+  padding: 10px 10px;
+  background-color: whitesmoke;
+  color: #1D2228;
+  border-radius: 9px;
+  overflow: auto;
+
 }
 #det{
   display: flex;
-  flex-direction: row;
-  overflow: scroll;
   flex-wrap: wrap;
+  /* flex-direction: row; */
+  font-size: large;
+  font-weight: 500;
 }
-.list > button {
-  background-color: #E1E2E2; color: black;
+.add{
+  margin-left: 20px;
+}
+button{
+  background-color: #ffa600; color: whitesmoke;
   font-size: 16px;
-  padding: 10px 24px;
+  padding: 1px 10px;
   border-radius: 8px;
   transition-duration: 0.4s;
+  font-weight: bolder;
+  margin-left: 15px;
 }
-.list > button:hover {
-  background-color: #1D2228;
+button:hover {
+  background-color: #FB8122;
   color: white;
 }
 /* width */
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 10px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 3px grey; 
-  border-radius: 5px;
+  background: #f1f1f1; 
 }
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: rgb(163, 162, 162); 
-  border-radius: 5px;
+  background: #888; 
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #dbd3d3; 
+  background: #555; 
+}
+#intro{
+  color: whitesmoke;
+  text-align: center;
+  height: 500px;
+  background-image: url("https://images.freeimages.com/images/large-previews/4ed/abstract-patterns-1566494.jpg");
+}
+
+#tut{
+  border: thin #1D2228 ;
+  background-color: #1D2228;
+  opacity: 0.6;
+  width: 50%;
+  color: white;
+  margin: 20px auto;
+  text-align: left;
+}
+#tut > ol > li{
+  margin-bottom: 15px;
 }

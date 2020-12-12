@@ -12,17 +12,17 @@ try {
 
 const db = firebase.firestore();
 
-export function Edit(e){
+export function EditComplete(e){
 
     console.log(e.target.parentElement.children[0].innerHTML)
 
     let bigid = e.target.parentElement.children[0].innerHTML
     let neee=bigid.replace(" ","")
     var todoRef = db.collection("todo").doc(neee);
-    let newcont = prompt("input new content")
+    let newcomp = prompt("input new complete")
     
     return todoRef.update({
-        content: newcont
+        completed: newcomp
     })
         .then(function () {
             console.log("Document successfully updated!");

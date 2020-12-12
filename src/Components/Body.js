@@ -3,15 +3,12 @@ import { Show } from './show'
 import "firebase/firestore";
 import firebase from 'firebase/app'
 import { firebaseConfig } from '../config/firebase.config'
-import { createUser } from './createUser'
-
 
 try {
     firebase.initializeApp(firebaseConfig);
 } catch (e) {
     console.log(e.message)
 }
-
 
 const db = firebase.firestore();
 
@@ -21,6 +18,8 @@ let checkid = []
 let checkpass = []
 let change = []
 let bigid = []
+const admin = ["admin"]
+let date = new Date().toLocaleDateString()
 
 export class Body extends React.Component {
     constructor(props) {
@@ -33,9 +32,8 @@ export class Body extends React.Component {
             checkid: checkid,
             checkpass: checkpass,
             correct: "",
-            change: change
+            change: change,
         }
-
     }
 
     componentDidMount() {
@@ -81,8 +79,8 @@ export class Body extends React.Component {
 
     handleInputu(e) {
         console.log(e.target.value)
-        
-        this.setState({ da: e.target.value })   
+
+        this.setState({ da: e.target.value })
     }
     handleInputp(e) {
         this.setState({ pass: e.target.value })
@@ -96,10 +94,13 @@ export class Body extends React.Component {
         let i = prompt("input id:")
         let tile = prompt("input title:")
         let cont = prompt("input content:")
+        let comp = prompt("input complete:")
         db.collection("todo").add({
             id: i,
             title: tile,
-            content: cont
+            content: cont,
+            time: date,
+            completed: comp
         })
             .then(function (docRef) {
                 console.log("Document written with ID: ", docRef.id);
@@ -122,7 +123,6 @@ export class Body extends React.Component {
                         how.push(doc.data())
                         bigid.push(doc.id)
                     }
-
                 }
                 );
                 this.setState({ list: how })
@@ -136,6 +136,7 @@ export class Body extends React.Component {
     }
 
     render() {
+
         console.log(this.state.list)
         console.log(this.state)
         console.log(this.state.change)
@@ -146,7 +147,15 @@ export class Body extends React.Component {
                 li.push(this.state.list[i])
                 showthis = li.map(l => {
                     return (
-                        <Show i={l.bigid} id={l.id} title={l.title} content={l.content} />
+                        <Show completed={l.completed} time={l.time} id={l.id} title={l.title} content={l.content} />
+                    )
+                })
+            } if (this.state.correct === admin[0]) {
+
+                li.push(this.state.list[i])
+                showthis = li.map(l => {
+                    return (
+                        <Show completed={l.completed} time={l.time} i={l.bigid} id={l.id} title={l.title} content={l.content} />
                     )
                 })
             }
@@ -154,38 +163,29 @@ export class Body extends React.Component {
 
 
         return <Fragment>
-            <div id="header">
-                <div id="left">
-                    <h3>TO DO APP</h3>
-                </div>
-                <div id="sidehead">
-                    <p onClick={createUser} >Sign up</p>
-                    <p >About</p>
-
-                </div>
-            </div>
             <div id="body">
                 <div id="user">
-                    <p style={{ textAlign: "center" }} >Sign in</p><br />
-                    <label for="name">username</label>
-                    <input id="name" onChange={this.handleInputu.bind(this)}  ></input><br /><br />
-                    <label for="pass">password</label>
-                    <input id="pass" type="password" onChange={this.handleInputp.bind(this)} onKeyDown={this.handleEnter.bind(this)} ></input>
-                    <button className="signin" onClick={this.Check.bind(this)} >Sign in</button>
-                    <p style={{ textAlign: "center" }} >Instruction:</p>
-                    <p>- Press "Sign up" to create new user</p>
-                    <p>- Press "Add" to add new objective to your to do list</p>
-                    <p>- Press "Edit" to edit specific item</p>
+                    <p style={{ textAlign: "center" }} >Đăng nhập ở đây nè </p>
+                    <div id="signup">
+                        <div>
+                            <label for="name">Tên đăng nhập: </label>
+                            <input id="name" onChange={this.handleInputu.bind(this)}  ></input>
+                        </div>
+                        <div>
+                            <label for="pass">Mật khẩu: </label>
+                            <input id="pass" type="password" onChange={this.handleInputp.bind(this)} onKeyDown={this.handleEnter.bind(this)} ></input>
+                            <button className="signin" onClick={this.Check.bind(this)} >VÀO</button>
+                        </div>
+                    </div>
                 </div>
                 <div id="info">
-                    <p style={{ textAlign: "center" }} >Info</p>
+                    <p style={{ textAlign: "center", fontWeight: "bold", fontSize: "x-large" }} >Info</p>
                     <div id="det">
                         {showthis}
                     </div>
-                    <button id="add" onClick={this.createNew.bind(this)} >Add</button>
+                    <button id="add" onClick={this.createNew.bind(this)} >THÊM</button>
                 </div>
             </div>
         </Fragment>
     }
 }
-
